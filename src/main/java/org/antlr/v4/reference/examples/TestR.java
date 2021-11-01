@@ -1,4 +1,4 @@
-package org.antlr.v4.reference.tour;
+package org.antlr.v4.reference.examples;
 
 /***
  * Excerpted from "The Definitive ANTLR 4 Reference",
@@ -9,18 +9,22 @@ package org.antlr.v4.reference.tour;
  * Visit http://www.pragmaticprogrammer.com/titles/tpantlr2 for more book information.
  ***/
 
+import org.antlr.v4.gui.Trees;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.RuleContext;
 
-public class Col {
+public class TestR {
   public static void main(String[] args) throws Exception {
-    CharStream input = CharStreams.fromStream(System.in);
-    RowsLexer lexer = new RowsLexer(input);
+    CharStream input = CharStreams.fromFileName(args[0]);
+    RLexer lexer = new RLexer(input);
     CommonTokenStream tokens = new CommonTokenStream(lexer);
-    int col = Integer.valueOf(args[0]);
-    RowsParser parser = new RowsParser(tokens, col); // pass column number!
-    parser.setBuildParseTree(false); // don't waste time bulding a tree
-    parser.file(); // parse
+    RParser parser = new RParser(tokens);
+    parser.setBuildParseTree(true);
+    RuleContext tree = parser.prog();
+    Trees.inspect(tree, parser);
+    Trees.save(tree, parser, "/tmp/R.ps");
+    System.out.println(tree.toStringTree(parser));
   }
 }
