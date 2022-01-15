@@ -13,6 +13,8 @@
         <maven.compiler.target>11</maven.compiler.target>
         <antlr.version>4.9.2</antlr.version>
         <generated.source.dir>${project.build.directory}/generated-sources</generated.source.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -38,6 +40,13 @@
                         ${generated.source.dir}
                     </outputDirectory>
                     <visitor>true</visitor>
+                    <excludes>
+                    <!--These files have implicitly syntax errors, therefor excluded from processing-->
+                        <exclude>org/antlr/v4/reference/reference/Conflict.g4</exclude>
+                        <exclude>org/antlr/v4/reference/reference/P.g4</exclude>
+                        <exclude>org/antlr/v4/reference/reference/Main.g4</exclude>
+                        <exclude>org/antlr/v4/reference/reference/T2.g4</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
@@ -47,6 +56,7 @@
                             <goal>antlr4</goal>
                         </goals>
                     </execution>
+
                 </executions>
             </plugin>
 

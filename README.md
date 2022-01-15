@@ -6,14 +6,15 @@ Parr, published by [The Pragmatic Bookshelf](https://pragprog.com).
 
 I've applied the updates of lukekras from [def-antlr4-ref-code](https://github.com/lukekras/def-antlr4-ref-code).
 
-I've simply read the book, downloaded the code, and run the examples (using Antlr 4.9.2). This repo is the result of the
-corrections to the code for the above versions of antler.
-
 This repo is mavenized project of the code.
+
+I've simply read the book, downloaded the code, and run the examples (using Antlr 4.9.2). This repo is the result of the
+corrections which needed for mavenized project.
+
 
 ## build
 
-Just `mvn compile` in root (`antlr-refguide` directory, containing pom file) directory.
+Just `mvn clean compile` in root (`antlr-refguide` directory, containing pom file) directory.
 
 ## As a bonus, some useful links:
 
